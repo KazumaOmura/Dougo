@@ -13,6 +13,7 @@
 
 <body>
 @include('layouts.header')
+{{ Breadcrumbs::render('admin.user.index') }}
 </body>
 <script src="{{ asset('js/bootstrap.js') }}"></script>
 
