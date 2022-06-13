@@ -1,0 +1,11 @@
+---
+# tasks file for php
+
+- name: Install Composer
+  shell: curl -sS https://getcomposer.org/installer | php
+
+- name: Require Phinx as a dependency using Composer
+  shell: sudo php composer.phar require robmorgan/phinx
+
+- name: Install phinx
+  shell: php composer.phar install

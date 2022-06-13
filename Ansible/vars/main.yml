@@ -1,0 +1,7 @@
+##
+project_name: dougo
+mysql_user: omura
+mysql_password: omura
+mysql_database: dougo_db
+root_dir: /var/www/dougo
+##

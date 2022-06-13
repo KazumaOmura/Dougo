@@ -1,0 +1,20 @@
+---
+# tasks file for phpmyadmin
+
+  - name: phpmyadmin php.ini mysqli fix
+    replace: 
+      dest: /etc/php/8.1/fpm/php.ini
+      regexp: ';extension=mysqli'
+      replace: 'extension=php_mysqli.dll'
+
+  - name: phpmyadmin php.ini mbstring fix
+    replace: 
+      dest: /etc/php/8.1/fpm/php.ini
+      regexp: ';extension=mbstring'
+      replace: 'extension=php_mbstring.dll'
+
+  - name: phpmyadmin php.ini extension_dir fix
+    replace: 
+      dest: /etc/php/8.1/fpm/php.ini
+      regexp: ';extension_dir = "./"'
+      replace: 'extension_dir = "ext"'

@@ -1,0 +1,2 @@
+- name: add laravel/cashier
+  shell: composer require laravel/cashier
