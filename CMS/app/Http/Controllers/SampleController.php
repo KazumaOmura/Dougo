@@ -52,6 +52,29 @@ class SampleController extends Controller
 //        ## delete
 //        Users::where('id', 2)->delete();
 
+        $repo = UsersRepository::getColumnName();
 
+        $column =[
+            'id',
+            'name'
+        ];
+
+        $array = [];
+        foreach ($repo as $value){
+            $array_tempo = [];
+            $id = $value->id;
+            $name = $value->name;
+            array_push($array_tempo, $id);
+            array_push($array_tempo, $name);
+            array_push($array, $array_tempo);
+        }
+
+        $hoge = "<p style='color:red;'>aaa</p>";
+
+        return view('sample', compact(
+            'column',
+            'array',
+            'hoge'
+        ));
     }
 }

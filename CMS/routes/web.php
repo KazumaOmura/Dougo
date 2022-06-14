@@ -15,9 +15,9 @@ use App\Http\Controllers\SampleController;
 */
 
 Route::get('/', function () {
-    return view('sample');
+    return view('sample')->name('sample');
 });
 
 
-//Route::get('/sample', [SampleController::class, 'index']);
-Route::get('json_data', [SampleController::class, 'json_data'])->name('json_data');
+Route::get('/sample', [SampleController::class, 'index']);
+//Route::get('json_data', [SampleController::class, 'json_data'])->name('json_data');
