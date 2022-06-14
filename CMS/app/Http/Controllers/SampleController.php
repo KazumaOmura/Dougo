@@ -8,6 +8,28 @@ use App\ORM\Generated\Repository\UsersRepository;
 
 class SampleController extends Controller
 {
+    public function json_data() {
+
+        $string = '文字列';
+        $number = 12345;
+        $boolean = true;
+        $array = ['太郎', '次郎', '三郎'];
+        $object = [
+            'key_1' => 'value_1',
+            'key_2' => 'value_2',
+            'key_3' => 'value_3',
+        ];
+
+        return [
+            'string' => $string,
+            'number' => $number,
+            'boolean' => $boolean,
+            'array' => $array,
+            'object' => $object
+        ];
+
+    }
+
     public function index()
     {
 //        ## RepositoryでDB操作
@@ -30,6 +52,6 @@ class SampleController extends Controller
 //        ## delete
 //        Users::where('id', 2)->delete();
 
-        
+
     }
 }

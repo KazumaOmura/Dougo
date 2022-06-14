@@ -19,4 +19,5 @@ Route::get('/', function () {
 });
 
 
-Route::get('/sample', [SampleController::class, 'index']);
+//Route::get('/sample', [SampleController::class, 'index']);
+Route::get('json_data', [SampleController::class, 'json_data'])->name('json_data');
