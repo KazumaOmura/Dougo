@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Console\Command;
 
 use App\ORM\Generated\Repository\SampleRepository;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 class MakeORM extends Command
 {
@@ -21,20 +22,20 @@ class MakeORM extends Command
 
         // テーブル名一覧を取得
         $tableNames = $schema->listTableNames();
+
         foreach ($tableNames as $tableName) {
 
-            $tableName_ucFirst = ucfirst(strtolower($tableName));
+            if($tableName === 'migrations' || $tableName === 'personal_access_tokens'){
+                continue;
+            }
+
+            $tableNameCamel = str_replace(' ', '', ucwords(str_replace('_', ' ', $tableName)));
 
             // テーブル情報を取得
-            $schema = DB::connection()->getDoctrineSchemaManager();
             $table = $schema->listTableDetails($tableName);
-
-            // var_dump($table);
-            // exit;
 
             // カラム情報を取得
             $columns = $table->getColumns();
-
             
             $column_list = NULL;
             $column_id = NULL;
@@ -54,7 +55,7 @@ class MakeORM extends Command
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
             
-class $tableName_ucFirst extends Model
+class $tableNameCamel extends Model
 {
     public \$timestamps = false;
             
@@ -73,7 +74,7 @@ class $tableName_ucFirst extends Model
 EOF;
 
             $fpath = './app/Models/';
-            $fname = $fpath . $tableName_ucFirst . ".php";
+            $fname = $fpath . $tableNameCamel . ".php";
             $fhandle = fopen($fname, "w"); //ファイルを書き込みモードで開く。
             fwrite($fhandle, $model_value); //ファイルをバイナリモードで書き込む。第二引数に書き込みたい文字列
             fclose($fhandle); //ファイルポインタを閉じる
@@ -88,20 +89,20 @@ EOF;
 
 namespace App\ORM\Generated\Repository;
         
-use App\Models\\${tableName_ucFirst};
+use App\Models\\${tableNameCamel};
         
-class ${tableName_ucFirst}Repository
+class ${tableNameCamel}Repository
 {
     public static function getAll(int \$id):object
     {
-        \$all = ${tableName_ucFirst}::where('id', \$id)->get();
+        \$all = ${tableNameCamel}::where('id', \$id)->get();
         return \$all;
     }
 }        
 EOF;
 
             $fpath = './app/ORM/Generated/Repository/';
-            $fname = $fpath . $tableName_ucFirst . "Repository.php";
+            $fname = $fpath . $tableNameCamel . "Repository.php";
             $fhandle = fopen($fname, "w"); //ファイルを書き込みモードで開く。
             fwrite($fhandle, $repo_value); //ファイルをバイナリモードで書き込む。第二引数に書き込みたい文字列
             fclose($fhandle); //ファイルポインタを閉じる

@@ -10,7 +10,6 @@ class SampleController extends Controller
 {
     public function index()
     {
-
         ## RepositoryでDB操作
         $repo = UsersRepository::getAll(1);
         var_dump($repo);
