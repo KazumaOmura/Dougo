@@ -12,9 +12,15 @@ class UsersRepository
         return $all;
     }
 
-    public static function getColumnName():object
+    public static function getFetchColumn(string $column):object
     {
+        $column_array = explode (",",$column);
         $all = Users::get();
+        foreach ($all as $value){
+            echo $value->{$column_array[0]};
+            echo $value->{$column_array[1]};
+        }
+        exit;
         return $all;
     }
 }

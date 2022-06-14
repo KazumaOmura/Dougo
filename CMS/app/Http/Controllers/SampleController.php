@@ -8,73 +8,19 @@ use App\ORM\Generated\Repository\UsersRepository;
 
 class SampleController extends Controller
 {
-    public function json_data() {
-
-        $string = '文字列';
-        $number = 12345;
-        $boolean = true;
-        $array = ['太郎', '次郎', '三郎'];
-        $object = [
-            'key_1' => 'value_1',
-            'key_2' => 'value_2',
-            'key_3' => 'value_3',
-        ];
-
-        return [
-            'string' => $string,
-            'number' => $number,
-            'boolean' => $boolean,
-            'array' => $array,
-            'object' => $object
-        ];
-
-    }
-
     public function index()
     {
-//        ## RepositoryでDB操作
-//        $repo = UsersRepository::getAll(1);
-//        var_dump($repo);
-//
-//        ## create
-//        Users::create([
-//            'id' => '2',
-//            'name' => 'sample_user',
-//        ]);
-//
-//        ## read(よく使うものはRepositoryでメソッドにする)
-//
-//        ## update
-//        Users::where('id', 2)->update([
-//            'name' => 'hoge_user',
-//        ]);
-//
-//        ## delete
-//        Users::where('id', 2)->delete();
-
-        $repo = UsersRepository::getColumnName();
-
-        $column =[
-            'id',
-            'name'
-        ];
-
-        $array = [];
-        foreach ($repo as $value){
-            $array_tempo = [];
-            $id = $value->id;
-            $name = $value->name;
-            array_push($array_tempo, $id);
-            array_push($array_tempo, $name);
-            array_push($array, $array_tempo);
-        }
-
-        $hoge = "<p style='color:red;'>aaa</p>";
+        //  ページのタイトルを定義する
+        $title = 'ユーザ一覧';
+        //  表のカラム名を文字列で定義する
+        $column = 'id,name';
+        //  Repositoryの名前をここで宣言する
+        $reponame = 'Users';
 
         return view('sample', compact(
+            'title',
             'column',
-            'array',
-            'hoge'
+            'reponame'
         ));
     }
 }
