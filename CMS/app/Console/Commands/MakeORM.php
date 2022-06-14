@@ -8,9 +8,9 @@ use Illuminate\Console\Command;
 
 use App\ORM\Generated\Repository\SampleRepository;
 
-class MakeFiles extends Command
+class MakeORM extends Command
 {
-    protected $signature = 'make:Files';
+    protected $signature = 'make:orm';
     protected $description = 'Reoisitory,Modelの作成';
 
     public function handle()
@@ -54,11 +54,11 @@ class MakeFiles extends Command
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
             
-class Users extends Model
+class $tableName_ucFirst extends Model
 {
     public \$timestamps = false;
             
-    protected \$table = 'users';
+    protected \$table = '${tableName}';
             
     protected \$fillable = [
        $column_list

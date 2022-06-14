@@ -546,11 +546,10 @@ class ComposerStaticInitbd1c69b87ac1889828685fc27029b107
     );
 
     public static $classMap = array (
-        'App\\Console\\Commands\\MakeFiles' => __DIR__ . '/../..' . '/app/Console/Commands/MakeFiles.php',
-        'App\\Console\\Commands\\hogehoge' => __DIR__ . '/../..' . '/app/Console/Commands/hogehoge.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\SampleController' => __DIR__ . '/../..' . '/app/Http/Controllers/SampleController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -560,10 +559,11 @@ class ComposerStaticInitbd1c69b87ac1889828685fc27029b107
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Models\\Profile' => __DIR__ . '/../..' . '/app/Models/Profile.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\Users' => __DIR__ . '/../..' . '/app/Models/Users.php',
-        'App\\ORM\\Generated\\Repository\\HogeRepository' => __DIR__ . '/../..' . '/app/ORM/Generated/Repository/HogeRepository.php',
-        'App\\ORM\\Generated\\Repository\\SampleRepository' => __DIR__ . '/../..' . '/app/ORM/Generated/Repository/SampleRepository.php',
+        'App\\ORM\\Generated\\Repository\\ProfileRepository' => __DIR__ . '/../..' . '/app/ORM/Generated/Repository/ProfileRepository.php',
+        'App\\ORM\\Generated\\Repository\\UsersRepository' => __DIR__ . '/../..' . '/app/ORM/Generated/Repository/UsersRepository.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
