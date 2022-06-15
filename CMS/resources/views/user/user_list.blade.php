@@ -15,7 +15,7 @@
 @include('layouts.header')
 {{ Breadcrumbs::render('admin.user.index') }}
 <main class="container-xxl">
-    <x-table column="{{ $column }}" reponame="{{ $reponame }}"/>
+    <x-table column="{{ $column }}" reponame="{{ $repository_name }}" title="{{ $title }}"/>
 </main>
 
 </body>

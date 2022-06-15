@@ -4,22 +4,22 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Table extends Component
+class TabForm extends Component
 {
     public $columns;
     public $values;
-    public $title;
+    public $repository_name;
 
-    public function __construct(string $column, string $reponame, string $title)
+    public function __construct(string $column, string $reponame, int $userid)
     {
         $repository_name = "App\ORM\Generated\Repository\\".$reponame."Repository";
-        $this->values = $repository_name::getAll();
+        $this->repository_name = $reponame;
+        $this->values = $repository_name::getValueByID($userid);
         $this->columns = explode (",",$column);
-        $this->title = $title;
     }
 
     public function render()
     {
-        return view('components.table');
+        return view('components.tab_form');
     }
 }

@@ -1,3 +1,4 @@
+<h2>{{ $title }}</h2>
 <table class="table">
     <tr>
         @foreach ($columns as $column)
@@ -10,7 +11,7 @@
             @foreach ($columns as $column)
                 <td>{{ $value->{$column} }}</td>
             @endforeach
-                <td><button type="button" class="btn btn-primary">Primary</button></td>
+                <td><a href="/user/{{ $value->id }}" class="btn btn-primary">編集</a></td>
             </tr>
         @endforeach
 </table>

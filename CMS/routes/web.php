@@ -1,23 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SampleController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\UserListController;
+use App\Http\Controllers\UserFormController;
+use App\Http\Controllers\UpdateController;
 
 Route::get('/', function () {
     return view('sample')->name('sample');
 });
 
 
-Route::get('/sample', [SampleController::class, 'index']);
-//Route::get('json_data', [SampleController::class, 'json_data'])->name('json_data');
+Route::get('/user', [UserListController::class, 'index']);
+Route::get('/user/{user_id}', [UserFormController::class, 'index']);
+
+Route::post('{any}/update', [UpdateController::class, 'save']);

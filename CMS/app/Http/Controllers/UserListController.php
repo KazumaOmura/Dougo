@@ -6,21 +6,21 @@ use Illuminate\Http\Request;
 use App\Models\Users;
 use App\ORM\Generated\Repository\UsersRepository;
 
-class SampleController extends Controller
+class UserListController extends Controller
 {
     public function index()
     {
         //  ページのタイトルを定義する
         $title = 'ユーザ一覧';
         //  表のカラム名を文字列で定義する
-        $column = 'id,name';
+        $column = 'id,name,email';
         //  Repositoryの名前をここで宣言する
-        $reponame = 'Users';
+        $repository_name = 'Users';
 
-        return view('sample', compact(
+        return view('user.user_list', compact(
             'title',
             'column',
-            'reponame'
+            'repository_name'
         ));
     }
 }

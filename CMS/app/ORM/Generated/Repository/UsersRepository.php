@@ -12,15 +12,9 @@ class UsersRepository
         return $all;
     }
 
-    public static function getFetchColumn(string $column):object
+    public static function getValueByID(int $user_id):object
     {
-        $column_array = explode (",",$column);
-        $all = Users::get();
-        foreach ($all as $value){
-            echo $value->{$column_array[0]};
-            echo $value->{$column_array[1]};
-        }
-        exit;
-        return $all;
+        $value = Users::where('id', $user_id)->first();
+        return $value;
     }
 }
