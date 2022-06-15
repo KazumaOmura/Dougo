@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Users;
-use App\ORM\Generated\Repository\UsersRepository;
-
-class UserFormController extends Controller
+class UsersFormController extends Controller
 {
-    public function index(int $user_id)
+    public function index(int $id)
     {
         //  ページのタイトルを定義する
         $title = 'ユーザ編集';
@@ -17,11 +13,11 @@ class UserFormController extends Controller
         //  Repositoryの名前をここで宣言する
         $repository_name = 'Users';
 
-        return view('user.user_form', compact(
+        return view('users.users_form', compact(
             'title',
             'column',
             'repository_name',
-            'user_id',
+            'id',
         ));
     }
 }

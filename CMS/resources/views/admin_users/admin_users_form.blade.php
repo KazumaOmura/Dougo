@@ -13,9 +13,9 @@
 
 <body>
 @include('layouts.header')
-{{ Breadcrumbs::render('admin.user.index') }}
+{{ Breadcrumbs::render('admin_users.form') }}
 <main class="container-xxl">
-    <x-table column="{{ $column }}" reponame="{{ $repository_name }}" title="{{ $title }}"/>
+    <x-tab_form column="{{ $column }}" reponame="{{ $repository_name }}" userid="{{ $id }}"/>
 </main>
 
 </body>

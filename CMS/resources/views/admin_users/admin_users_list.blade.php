@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -13,9 +13,9 @@
 
 <body>
 @include('layouts.header')
-{{ Breadcrumbs::render('admin.user.index') }}
+{{ Breadcrumbs::render('admin_users.list') }}
 <main class="container-xxl">
-    <x-tab_form column="{{ $column }}" reponame="{{ $repository_name }}" userid="{{ $user_id }}"/>
+    <x-table column="{{ $column }}" reponame="{{ $repository_name }}" title="{{ $title }}"/>
 </main>
 
 </body>

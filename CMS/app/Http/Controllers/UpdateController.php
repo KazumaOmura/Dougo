@@ -46,8 +46,8 @@ class UpdateController extends Controller
         $model->getConnection()->statement($query);
 
         // redirect_url 生成
-        $redirect_url = "/user/".$request->id;
-//        $redirect_url = "/user/1";
+        $redirect_url = "/".substr($table_name, 0, -1)."/".$request->id;
+        echo $redirect_url;
         return redirect($redirect_url);
     }
 }

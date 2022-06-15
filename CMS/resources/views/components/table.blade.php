@@ -11,7 +11,7 @@
             @foreach ($columns as $column)
                 <td>{{ $value->{$column} }}</td>
             @endforeach
-                <td><a href="/user/{{ $value->id }}" class="btn btn-primary">編集</a></td>
+                <td><a href="/{{ $repository_name_snake }}/{{ $value->id }}" class="btn btn-primary">編集</a></td>
             </tr>
         @endforeach
 </table>

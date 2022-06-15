@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Users;
-use App\ORM\Generated\Repository\UsersRepository;
-
-class UserListController extends Controller
+class UsersListController extends Controller
 {
     public function index()
     {
@@ -17,7 +13,7 @@ class UserListController extends Controller
         //  Repositoryの名前をここで宣言する
         $repository_name = 'Users';
 
-        return view('user.user_list', compact(
+        return view('users.users_list', compact(
             'title',
             'column',
             'repository_name'

@@ -10848,3 +10848,18 @@ textarea.form-control-lg {
     background: #e7e7e7;
     border-radius: 0.2rem;
 }
+
+/*ヘッダー背景色*/
+header > nav,ul{
+    background: #6a1a21 !important;
+}
+
+/*ヘッダードロップダウンホバー*/
+header .dropdown-menu li :hover{
+    background: #000000 !important;
+}
+
+/*ヘッダー文字色*/
+header a{
+    color: #fff !important;
+}

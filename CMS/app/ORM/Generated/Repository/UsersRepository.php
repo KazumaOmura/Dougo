@@ -12,9 +12,9 @@ class UsersRepository
         return $all;
     }
 
-    public static function getValueByID(int $user_id):object
+    public static function getValueByID(int $id):object
     {
-        $value = Users::where('id', $user_id)->first();
+        $value = Users::where('id', $id)->first();
         return $value;
     }
 }

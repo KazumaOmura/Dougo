@@ -10,7 +10,7 @@ class Users extends Model
     protected $table = 'users';
 
     protected $fillable = [
-       'name',
+       'name','email',
     ];
 
     // アプリケーション側でcreateなどできない値を記述
