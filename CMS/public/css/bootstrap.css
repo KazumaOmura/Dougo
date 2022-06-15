@@ -10850,7 +10850,7 @@ textarea.form-control-lg {
 }
 
 /*ヘッダー背景色*/
-header > nav,ul{
+header, header nav ul{
     background: #6a1a21 !important;
 }
 
