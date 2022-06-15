@@ -11,6 +11,7 @@ return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AdminUsersFormController' => $baseDir . '/app/Http/Controllers/AdminUsersFormController.php',
+    'App\\Http\\Controllers\\AdminUsersListController' => $baseDir . '/app/Http/Controllers/AdminUsersListController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\ProfileFormController' => $baseDir . '/app/Http/Controllers/ProfileFormController.php',
     'App\\Http\\Controllers\\ProfileListController' => $baseDir . '/app/Http/Controllers/ProfileListController.php',

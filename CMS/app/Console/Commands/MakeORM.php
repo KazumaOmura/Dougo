@@ -30,7 +30,7 @@ class MakeORM extends Command
 <header>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">DougoCMS</a>
+            <a class="navbar-brand" href="/">DougoCMS</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -88,6 +88,47 @@ EOF;
 
 
 
+
+        // index作成
+        $breadcrumbs_value = <<< EOF
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" media="all" href="{{ asset('css/bootstrap.css') }}">
+
+    <title>Dougo CMS</title>
+</head>
+
+<body>
+@include('layouts.header')
+<main class="container-xxl">
+    <h3>Menu</h3>
+    <ul class="list-group list-group-flush" style="max-width: 400px;">
+
+EOF;
+
+        $filename = './resources/views/index.blade.php';
+        // ファイルを開く（'a'は追記モード）
+        $fp = fopen($filename, "w");
+        // ファイルに書き込む
+        fputs($fp, $breadcrumbs_value);
+        // ファイルを閉じる
+        fclose($fp);
+        echo "【index作成】";
+        echo $filename."\n";
+
+
+
+
+
+
+
+
         // web.php作成
         $route_value = <<< EOF
 
@@ -95,7 +136,7 @@ EOF;
 
 use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
-    return view('index')->name('index');
+    return view('index');
 });
 
 use App\Http\Controllers\UpdateController;
@@ -127,7 +168,7 @@ EOF;
 
         foreach ($tableNames as $tableName) {
 
-            if($tableName === 'migrations' || $tableName === 'personal_access_tokens'){
+            if ($tableName === 'migrations' || $tableName === 'personal_access_tokens') {
                 continue;
             }
 
@@ -142,18 +183,13 @@ EOF;
             $column_list = NULL;
             $column_id = NULL;
             foreach ($columns as $column) {
-                if($column->getName() != 'id') {
-                    $column_list = $column_list . "'".$column->getName()."',";
+                if ($column->getName() != 'id') {
+                    $column_list = $column_list . "'" . $column->getName() . "',";
                 } else {
                     $column_id = "'id'";
                 }
                 // array_push($columnNames, $column->getName());
             }
-
-
-
-
-
 
 
             // ヘッダー追記
@@ -171,16 +207,7 @@ EOF;
             // ファイルを閉じる
             fclose($fp);
             echo "【ヘッダーメニュー追加】";
-            echo $filename."\n";
-
-
-
-
-
-
-
-
-
+            echo $filename . "\n";
 
 
             // web.php追記
@@ -201,7 +228,8 @@ EOF;
             // ファイルを閉じる
             fclose($fp);
             echo "【web.php追記】";
-            echo $tableName."\n";
+            echo $tableName . "\n";
+
 
 
 
@@ -239,21 +267,11 @@ EOF;
             $fpath = './app/Models/';
             $fname = $fpath . $tableNameCamel . ".php";
             // ファイルが存在するか判定
-            if(!file_exists($fname)){
+            if (!file_exists($fname)) {
                 $fhandle = fopen($fname, "w"); //ファイルを書き込みモードで開く。
                 fwrite($fhandle, $model_value); //ファイルをバイナリモードで書き込む。第二引数に書き込みたい文字列
                 fclose($fhandle); //ファイルポインタを閉じる
             }
-
-
-
-
-
-
-
-
-
-
 
 
             // Repository作成
@@ -282,17 +300,11 @@ EOF;
 
             $fpath = './app/ORM/Generated/Repository/';
             $fname = $fpath . $tableNameCamel . "Repository.php";
-            if(!file_exists($fname)){
+            if (!file_exists($fname)) {
                 $fhandle = fopen($fname, "w"); //ファイルを書き込みモードで開く。
                 fwrite($fhandle, $repo_value); //ファイルをバイナリモードで書き込む。第二引数に書き込みたい文字列
                 fclose($fhandle); //ファイルポインタを閉じる
             }
-
-
-
-
-
-
 
 
             // ListController作成
@@ -324,18 +336,11 @@ EOF;
 
             $fpath = './app/Http/Controllers/';
             $fname = $fpath . $tableNameCamel . "ListController.php";
-            if(!file_exists($fname)){
+            if (!file_exists($fname)) {
                 $fhandle = fopen($fname, "w"); //ファイルを書き込みモードで開く。
                 fwrite($fhandle, $list_controller_value); //ファイルをバイナリモードで書き込む。第二引数に書き込みたい文字列
                 fclose($fhandle); //ファイルポインタを閉じる
             }
-
-
-
-
-
-
-
 
 
             // FormController作成
@@ -367,19 +372,11 @@ EOF;
 
             $fpath = './app/Http/Controllers/';
             $fname = $fpath . $tableNameCamel . "FormController.php";
-            if(!file_exists($fname)){
+            if (!file_exists($fname)) {
                 $fhandle = fopen($fname, "w"); //ファイルを書き込みモードで開く。
                 fwrite($fhandle, $form_controller_value); //ファイルをバイナリモードで書き込む。第二引数に書き込みたい文字列
                 fclose($fhandle); //ファイルポインタを閉じる
             }
-
-
-
-
-
-
-
-
 
 
             // list blade作成
@@ -410,32 +407,26 @@ EOF;
 EOF;
 
             $fpath = './resources/views/';
-            $blade_dir_name = $fpath.$tableName;
+            $blade_dir_name = $fpath . $tableName;
             $fname = $blade_dir_name . "/" . $tableName . "_list.blade.php";
-            if(!file_exists($blade_dir_name)){
+            if (!file_exists($blade_dir_name)) {
                 mkdir($blade_dir_name); // ディレクトリ作成
                 echo "【ディレクトリ作成】";
                 echo $blade_dir_name . "\n";
             }
 
-            if(!file_exists($fname)) {
+            if (!file_exists($fname)) {
                 $fhandle = fopen($fname, "w"); //ファイルを書き込みモードで開く。
                 fwrite($fhandle, $blade_list_value); //ファイルをバイナリモードで書き込む。第二引数に書き込みたい文字列
                 fclose($fhandle); //ファイルポインタを閉じる
                 echo "【ファイル作成】";
-                echo $fname."\n";
+                echo $fname . "\n";
             }
-
-
-
-
-
-
-
 
 
             // form blade作成
             $blade_list_value = <<< EOF
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -463,21 +454,49 @@ EOF;
 EOF;
 
             $fpath = './resources/views/';
-            $blade_dir_name = $fpath.$tableName;
+            $blade_dir_name = $fpath . $tableName;
             $fname = $blade_dir_name . "/" . $tableName . "_form.blade.php";
-            if(!file_exists($blade_dir_name)){
+            if (!file_exists($blade_dir_name)) {
                 mkdir($blade_dir_name); // ディレクトリ作成
                 echo "【ディレクトリ作成】";
                 echo $blade_dir_name . "\n";
             }
 
-            if(!file_exists($fname)) {
+            if (!file_exists($fname)) {
                 $fhandle = fopen($fname, "w"); //ファイルを書き込みモードで開く。
                 fwrite($fhandle, $blade_list_value); //ファイルをバイナリモードで書き込む。第二引数に書き込みたい文字列
                 fclose($fhandle); //ファイルポインタを閉じる
                 echo "【ファイル作成】";
-                echo $fname."\n";
+                echo $fname . "\n";
             }
+
+
+
+
+
+
+
+
+            // index追記
+            $breadcrumbs_value = <<< EOF
+
+        <li class="list-group-item"><a href="/${tableName}">${tableName}</a></li>
+
+EOF;
+
+            $filename = './resources/views/index.blade.php';
+            // ファイルを開く（'a'は追記モード）
+            $fp = fopen($filename, "a");
+            // ファイルに書き込む
+            fputs($fp, $breadcrumbs_value);
+            // ファイルを閉じる
+            fclose($fp);
+            echo "【idnex追記】";
+            echo $filename."\n";
+
+
+
+
 
 
 
@@ -507,14 +526,29 @@ EOF;
             fputs($fp, $breadcrumbs_value);
             // ファイルを閉じる
             fclose($fp);
-            echo "【パンクズ[".$tableName."]追記】"."\n";
+            echo "【パンクズ[" . $tableName . "]追記】" . "\n";
+
+
+
+
+
+
 
 
         }
+        // end foreach
 
 
-        // ヘッダー完成
-        $header_value = <<< EOF
+
+
+
+
+
+
+
+
+            // ヘッダー完成
+            $header_value = <<< EOF
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -533,14 +567,43 @@ EOF;
 </header>
 EOF;
 
-        $filename = './resources/views/layouts/header.blade.php';
+            $filename = './resources/views/layouts/header.blade.php';
+            // ファイルを開く（'a'は追記モード）
+            $fp = fopen($filename, "a");
+            // ファイルに書き込む
+            fputs($fp, $header_value);
+            // ファイルを閉じる
+            fclose($fp);
+            echo "【ヘッダー完成】";
+            echo $filename . "\n";
+
+
+
+
+
+
+
+
+        // index完成
+        $breadcrumbs_value = <<< EOF
+
+   </ul>
+</main>
+
+</body>
+<script src="{{ asset('js/bootstrap.js') }}"></script>
+</html>
+
+EOF;
+
+        $filename = './resources/views/index.blade.php';
         // ファイルを開く（'a'は追記モード）
         $fp = fopen($filename, "a");
         // ファイルに書き込む
-        fputs($fp, $header_value);
+        fputs($fp, $breadcrumbs_value);
         // ファイルを閉じる
         fclose($fp);
-        echo "【ヘッダー完成】";
+        echo "【idnex作成】";
         echo $filename."\n";
 
 

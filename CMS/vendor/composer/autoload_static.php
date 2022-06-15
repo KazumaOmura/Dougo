@@ -551,6 +551,7 @@ class ComposerStaticInitbd1c69b87ac1889828685fc27029b107
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminUsersFormController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminUsersFormController.php',
+        'App\\Http\\Controllers\\AdminUsersListController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminUsersListController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\ProfileFormController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileFormController.php',
         'App\\Http\\Controllers\\ProfileListController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileListController.php',

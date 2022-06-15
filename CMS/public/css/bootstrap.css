@@ -10863,3 +10863,15 @@ header .dropdown-menu li :hover{
 header a{
     color: #fff !important;
 }
+
+.breadcrumb, .container-xxl{
+  padding:1rem;
+}
+
+.breadcrumb{
+    margin-bottom:1rem;
+}
+
+.tab-content{
+    padding:1rem;
+}
