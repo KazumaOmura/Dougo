@@ -38,19 +38,23 @@ class MakeORM extends Command
                 <ul class="navbar-nav">
 
 EOF;
-        $filename = './resources/views/layouts/header.blade.php';
-        // ファイルを開く（'a'は追記モード）
-        $fp = fopen($filename, "w");
-        // ファイルに書き込む
-        fputs($fp, $header_value);
-        // ファイルを閉じる
-        fclose($fp);
-        echo "【ヘッダー作成】";
-        echo $filename."\n";
 
-
-
-
+        $fpath = './resources/views/';
+        $blade_dir_name = $fpath . "layouts";
+        $fname = $blade_dir_name . "/header.blade.php";
+        if(!file_exists($blade_dir_name)){
+            mkdir($blade_dir_name); // ディレクトリ作成
+            echo "【ディレクトリ作成】";
+            echo $blade_dir_name . "\n";
+        }
+            // ファイルを開く（'a'は追記モード）
+            $fp = fopen($fname, "w");
+            // ファイルに書き込む
+            fputs($fp, $header_value);
+            // ファイルを閉じる
+            fclose($fp);
+            echo "【ヘッダー作成】";
+            echo $fname."\n";
 
 
 
@@ -415,9 +419,6 @@ EOF;
             }
 
             if(!file_exists($fname)) {
-                mkdir($blade_dir_name); // ディレクトリ作成
-                echo "【ディレクトリ作成】";
-                echo $blade_dir_name."\n";
                 $fhandle = fopen($fname, "w"); //ファイルを書き込みモードで開く。
                 fwrite($fhandle, $blade_list_value); //ファイルをバイナリモードで書き込む。第二引数に書き込みたい文字列
                 fclose($fhandle); //ファイルポインタを閉じる
