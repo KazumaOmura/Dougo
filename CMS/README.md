@@ -28,3 +28,5 @@ use App\Http\Controllers\[~]FormController;
 Route::get('/[~]', [[~]ListController::class, 'index']);
 Route::get('/[~]/{[~]_id}', [[~]FormController::class, 'index']);
 ```
+
+Model,ORMに.gitkeepを入れる
