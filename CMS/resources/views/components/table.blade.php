@@ -1,8 +1,8 @@
 <h2>{{ $title }}</h2>
 <table class="table">
     <tr>
-        @foreach ($columns as $column)
-            <th scope="col">{{ $column }}</th>
+        @foreach ($index as $hoge)
+            <th scope="col">{{ $hoge }}</th>
         @endforeach
         <th scope="col">操作</th>
     </tr>

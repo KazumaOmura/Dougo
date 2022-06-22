@@ -321,13 +321,16 @@ class ${tableNameCamel}ListController extends Controller
         \$title = '${tableName}一覧';
         //  表のカラム名を文字列で定義する
         \$column = 'id,name';
+        //  表のindexを文字列で定義する
+        \$index = 'ID,名前';
         //  Repositoryの名前をここで宣言する
         \$repository_name = '${tableNameCamel}';
 
         return view('${tableName}.${tableName}_list', compact(
             'title',
             'column',
-            'repository_name'
+            'repository_name',
+            'index'
         ));
     }
 }
@@ -398,7 +401,7 @@ EOF;
 @include('layouts.header')
 {{ Breadcrumbs::render('${tableName}.list') }}
 <main class="container-xxl">
-    <x-table column="{{ \$column }}" reponame="{{ \$repository_name }}" title="{{ \$title }}"/>
+    <x-table column="{{ \$column }}" reponame="{{ \$repository_name }}" title="{{ \$title }}" index="{{ \$index }}"/>
 </main>
 
 </body>
