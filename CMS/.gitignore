@@ -13,3 +13,14 @@
 # yarn-error.log
 # /.idea
 # /.vscode
+
+/app/Http/Controllers/*
+!/app/Http/Controllers/Controller.php
+!/app/Http/Controllers/UpdateController.php
+
+/resources/views/*
+!/resources/views/components/
+
+/app/Models/*
+
+/app/ORM/Generated/Repository/*
