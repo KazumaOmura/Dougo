@@ -22,5 +22,7 @@
 !/resources/views/components/
 
 /app/Models/*
+!/app/Models/.gitkeep
 
 /app/ORM/Generated/Repository/*
+!/app/ORM/Generated/Repository/.gitkeep
